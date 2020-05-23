@@ -17,6 +17,7 @@ export const Post = ({data}) => {
         userPicture={data.userPicture}
         location={data.location}
       />
+      <MediaViewer />
     </View>
   );
 };
