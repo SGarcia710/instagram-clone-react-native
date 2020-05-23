@@ -4,13 +4,17 @@ import {View, Text} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import styles from './styles';
-import {RegularStory} from '../../StoryCircles/RegularStory/RegularStory';
+import {SomeonesStory, CIRCLE_TYPES} from '../../StoryCircles/SomeonesStory';
 
 const Header = ({userName, userPicture, location}) => {
   return (
     <View style={styles.headerWrapper}>
       <View style={styles.userWrapper}>
-        <RegularStory isMini={true} image={userPicture} />
+        <SomeonesStory
+          type={CIRCLE_TYPES.REGULAR_STORY}
+          isMini={true}
+          image={userPicture}
+        />
         <View style={styles.infoWrapper}>
           <Text style={styles.title}>{userName}</Text>
           <Text style={styles.location}>{location}</Text>

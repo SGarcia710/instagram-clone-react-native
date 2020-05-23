@@ -41,16 +41,24 @@ const getAngle = (type) => {
   }
 };
 
-export const StoryCircle = ({image, type, isMini}) => {
+const SIZE_FOR_SLIDER = 70;
+const SIZE_FOR_HEADER = 38;
+
+export const SomeonesStory = ({image, type, isMini}) => {
   return (
     <View style={styles.liveWrapper}>
       <LinearGradient
         {...getAngle(type)}
         colors={getGradient(type)}
-        style={styles.linearGradient(isMini ? 38 : 70)}>
+        style={styles.linearGradient(
+          isMini ? SIZE_FOR_HEADER : SIZE_FOR_SLIDER,
+        )}>
         <View
-          style={styles.circleWrapper(70, type === CIRCLE_TYPES.LIVE_STORY)}>
-          <Image style={styles.photo(72)} source={{uri: image}} />
+          style={styles.circleWrapper(
+            SIZE_FOR_SLIDER,
+            type === CIRCLE_TYPES.LIVE_STORY,
+          )}>
+          <Image style={styles.photo(SIZE_FOR_SLIDER)} source={{uri: image}} />
         </View>
 
         {type === CIRCLE_TYPES.LIVE_STORY ? (
