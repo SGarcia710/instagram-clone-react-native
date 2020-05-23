@@ -10,6 +10,8 @@ import Description from './Description';
 import Comments from './Comments';
 
 export const Post = ({data}) => {
+  console.log(data);
+
   return (
     <View>
       <Header
@@ -17,7 +19,7 @@ export const Post = ({data}) => {
         userPicture={data.userPicture}
         location={data.location}
       />
-      <MediaViewer />
+      <MediaViewer media={data.media} />
     </View>
   );
 };

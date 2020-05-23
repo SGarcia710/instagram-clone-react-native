@@ -1,22 +1,22 @@
 import React from 'react';
 
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import Swiper from 'react-native-swiper';
 
 import styles from './styles';
 
-export default () => {
+const MediaViewer = ({media}) => {
   return (
-    <Swiper style={styles.wrapper} height={200}>
-      <View style={styles.slide1}>
-        <Text style={styles.text}>Hello Swiper</Text>
-      </View>
-      <View style={styles.slide2}>
-        <Text style={styles.text}>Beautiful</Text>
-      </View>
-      <View style={styles.slide3}>
-        <Text style={styles.text}>And simple</Text>
-      </View>
-    </Swiper>
+    <View style={{height: 300}}>
+      <Swiper loop={false} style={styles.wrapper}>
+        {media.map((element) => {
+          if (element.type === 'image')
+            return (
+              <Image style={{height: '100%'}} source={{uri: element.url}} />
+            );
+        })}
+      </Swiper>
+    </View>
   );
 };
+export default MediaViewer;
