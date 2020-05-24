@@ -94,17 +94,14 @@ function HomeScreen() {
   return (
     <View style={styles.homeScreenWrapper}>
       <Header />
-      {/* <StoriesSlider stories={usersProfilePicture} /> */}
       <FlatList
+        keyExtractor={(item, index) => index.toString()}
         ListHeaderComponent={() => (
           <StoriesSlider stories={usersProfilePicture} />
         )}
         data={posts}
         renderItem={renderPost}
       />
-      {/* {posts.map((post) => {
-        return <Post key={() => uuidv4()} data={post} />;
-      })} */}
     </View>
   );
 }
