@@ -21,6 +21,7 @@ export const Post = ({data}) => {
       />
       <MediaViewer media={data.media} />
       <OptionsBar />
+      <LikesBar likesCount={data.likes} />
     </View>
   );
 };

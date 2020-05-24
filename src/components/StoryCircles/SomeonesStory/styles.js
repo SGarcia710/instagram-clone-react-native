@@ -1,10 +1,11 @@
 import {StyleSheet, Platform} from 'react-native';
 
 const styles = StyleSheet.create({
-  liveWrapper: {
+  someonesStoryWrapper: (isMini) => ({
     alignItems: 'center',
-    marginHorizontal: 5,
-  },
+    marginRight: 5,
+    marginLeft: isMini ? 0 : 5,
+  }),
   linearGradient: (size) => ({
     width: size,
     height: size,

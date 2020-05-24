@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   mediaViewerWrapper: {
     height: 350,
-    backgroundColor: 'darkgray',
+    // backgroundColor: 'darkgray',
   },
   slide1: {
     width: '100%',

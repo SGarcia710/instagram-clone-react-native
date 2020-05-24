@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
-import {v4 as uuidv4} from 'uuid';
+import {View, FlatList} from 'react-native';
 
 import styles from './styles';
 
@@ -17,6 +16,9 @@ function HomeScreen() {
   const posts = [
     {
       userName: 'obsoletememories',
+      likes: 552,
+      description: 'esta es una descripcion',
+      numberComments: 66,
       userPicture: usersProfilePicture[0],
       location: 'Cali, Colombia',
       profilePicture: usersProfilePicture[0],
@@ -35,6 +37,9 @@ function HomeScreen() {
     },
     {
       userName: 'jonatanvergara',
+      likes: 122,
+      description: 'esta es una descripcion',
+      numberComments: 14,
       userPicture: usersProfilePicture[1],
       location: 'Madrid, España',
       profilePicture: usersProfilePicture[1],
@@ -58,6 +63,9 @@ function HomeScreen() {
     },
     {
       userName: 'pradalu',
+      likes: 321,
+      description: 'esta es una descripcion',
+      numberComments: 12,
       userPicture: usersProfilePicture[2],
       location: 'Berlín, Alemanía',
       profilePicture: usersProfilePicture[2],
@@ -71,10 +79,9 @@ function HomeScreen() {
     },
     {
       userName: 'pachecoochoa',
-      likes: 12,
+      likes: 1102,
       description: 'esta es una descripcion',
-      date: 'UTC',
-      numberComments: 3,
+      numberComments: 5,
       userPicture: usersProfilePicture[3],
       location: 'Tokio, Japón',
       media: [
@@ -88,7 +95,7 @@ function HomeScreen() {
   ];
 
   const renderPost = ({item}) => {
-    return <Post key={() => uuidv4()} data={item} />;
+    return <Post key={item.toString()} data={item} />;
   };
 
   return (

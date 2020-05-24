@@ -46,7 +46,7 @@ const SIZE_FOR_HEADER = 38;
 
 export const SomeonesStory = ({image, type, isMini}) => {
   return (
-    <View style={styles.liveWrapper}>
+    <View style={styles.someonesStoryWrapper(isMini)}>
       <LinearGradient
         {...getAngle(type)}
         colors={getGradient(type)}

@@ -3,11 +3,11 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   headerWrapper: {
     flexDirection: 'row',
-    height: 40,
+    // height: 40,
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingRight: 10,
-    marginVertical: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
   },
   userWrapper: {flexDirection: 'row'},
   infoWrapper: {},
