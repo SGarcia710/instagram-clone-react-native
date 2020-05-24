@@ -20,6 +20,7 @@ export const Post = ({data}) => {
         location={data.location}
       />
       <MediaViewer media={data.media} />
+      <OptionsBar />
     </View>
   );
 };

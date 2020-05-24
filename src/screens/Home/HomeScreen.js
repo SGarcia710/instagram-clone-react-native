@@ -1,5 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
+import {v4 as uuidv4} from 'uuid';
 
 import styles from './styles';
 
@@ -15,7 +16,7 @@ function HomeScreen() {
 
   const posts = [
     {
-      userName: 'userName',
+      userName: 'obsoletememories',
       userPicture: usersProfilePicture[0],
       location: 'Cali, Colombia',
       profilePicture: usersProfilePicture[0],
@@ -33,7 +34,7 @@ function HomeScreen() {
       ],
     },
     {
-      userName: 'userName 2',
+      userName: 'jonatanvergara',
       userPicture: usersProfilePicture[1],
       location: 'Madrid, España',
       profilePicture: usersProfilePicture[1],
@@ -56,7 +57,7 @@ function HomeScreen() {
       ],
     },
     {
-      userName: 'userName 3',
+      userName: 'pradalu',
       userPicture: usersProfilePicture[2],
       location: 'Berlín, Alemanía',
       profilePicture: usersProfilePicture[2],
@@ -69,13 +70,16 @@ function HomeScreen() {
       ],
     },
     {
-      userName: 'userName 4',
+      userName: 'pachecoochoa',
+      likes: 12,
+      description: 'esta es una descripcion',
+      date: 'UTC',
+      numberComments: 3,
       userPicture: usersProfilePicture[3],
       location: 'Tokio, Japón',
-      profilePicture: usersProfilePicture[3],
       media: [
         {
-          type: 'video',
+          type: 'image',
           url:
             'https://firebasestorage.googleapis.com/v0/b/ig-clone-rn.appspot.com/o/posts%2Fimages%2FPost%20(30).jpg?alt=media&token=28773e6b-bdd5-4b22-92d8-98255f33ac57',
         },
@@ -83,11 +87,24 @@ function HomeScreen() {
     },
   ];
 
+  const renderPost = ({item}) => {
+    return <Post key={() => uuidv4()} data={item} />;
+  };
+
   return (
     <View style={styles.homeScreenWrapper}>
       <Header />
-      <StoriesSlider stories={usersProfilePicture} />
-      <Post data={posts[0]} />
+      {/* <StoriesSlider stories={usersProfilePicture} /> */}
+      <FlatList
+        ListHeaderComponent={() => (
+          <StoriesSlider stories={usersProfilePicture} />
+        )}
+        data={posts}
+        renderItem={renderPost}
+      />
+      {/* {posts.map((post) => {
+        return <Post key={() => uuidv4()} data={post} />;
+      })} */}
     </View>
   );
 }
