@@ -8,9 +8,15 @@ import OptionsBar from './OptionsBar';
 import LikesBar from './LikesBar';
 import Description from './Description';
 import Comments from './Comments';
+import Time from './Time';
+
+import {getRandomNumber} from '../../utils';
 
 export const Post = ({data}) => {
-  const shouldRenderDescription = Math.floor(Math.random() * (1 - 0 + 1) + 0);
+  const shouldRenderSection = {
+    description: getRandomNumber(0, 1),
+    comments: getRandomNumber(0, 1),
+  };
 
   return (
     <View>
@@ -22,10 +28,13 @@ export const Post = ({data}) => {
       <MediaViewer media={data.media} />
       <OptionsBar />
       <LikesBar likesCount={data.likes} />
-      {shouldRenderDescription ? (
+      {shouldRenderSection.description ? (
         <Description userName={data.userName} description={data.description} />
       ) : null}
-      <Comments commentsCount={data.numberComments} />
+      {shouldRenderSection.comments ? (
+        <Comments commentsCount={data.numberComments} />
+      ) : null}
+      <Time />
     </View>
   );
 };

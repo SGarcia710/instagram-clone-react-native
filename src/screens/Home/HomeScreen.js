@@ -40,7 +40,7 @@ function HomeScreen() {
       userName: 'jonatanvergara',
       likes: 122,
       description: 'esta es una descripcion',
-      numberComments: 14,
+      numberComments: 1,
       userPicture: usersProfilePicture[1],
       location: 'Madrid, España',
       profilePicture: usersProfilePicture[1],

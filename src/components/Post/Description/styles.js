@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     paddingHorizontal: 10,
-    marginVertical: 5,
+    marginTop: 5,
   },
   boldText: {
     fontWeight: 'bold',
