@@ -10,7 +10,7 @@ import Description from './Description';
 import Comments from './Comments';
 
 export const Post = ({data}) => {
-  console.log(data);
+  const shouldRenderDescription = Math.floor(Math.random() * (1 - 0 + 1) + 0);
 
   return (
     <View>
@@ -22,6 +22,10 @@ export const Post = ({data}) => {
       <MediaViewer media={data.media} />
       <OptionsBar />
       <LikesBar likesCount={data.likes} />
+      {shouldRenderDescription ? (
+        <Description userName={data.userName} description={data.description} />
+      ) : null}
+      <Comments commentsCount={data.numberComments} />
     </View>
   );
 };

@@ -17,7 +17,8 @@ function HomeScreen() {
     {
       userName: 'obsoletememories',
       likes: 552,
-      description: 'esta es una descripcion',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       numberComments: 66,
       userPicture: usersProfilePicture[0],
       location: 'Cali, Colombia',
@@ -64,7 +65,7 @@ function HomeScreen() {
     {
       userName: 'pradalu',
       likes: 321,
-      description: 'esta es una descripcion',
+      description: 'esta es una descripcion 😀😀',
       numberComments: 12,
       userPicture: usersProfilePicture[2],
       location: 'Berlín, Alemanía',
@@ -80,7 +81,7 @@ function HomeScreen() {
     {
       userName: 'pachecoochoa',
       likes: 1102,
-      description: 'esta es una descripcion',
+      description: '🙈',
       numberComments: 5,
       userPicture: usersProfilePicture[3],
       location: 'Tokio, Japón',
