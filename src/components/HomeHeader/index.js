@@ -6,7 +6,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import styles from './styles';
 import Logo from '../../assets/images/Logo.svg';
 
-export const Header = () => {
+const HomeHeader = () => {
   return (
     <View style={styles.HeaderWrapper}>
       <SimpleLineIcons name="camera" size={25} color="black" />
@@ -15,3 +15,4 @@ export const Header = () => {
     </View>
   );
 };
+export default HomeHeader;

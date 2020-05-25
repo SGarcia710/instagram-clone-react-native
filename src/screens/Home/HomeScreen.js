@@ -3,7 +3,7 @@ import {View, FlatList} from 'react-native';
 
 import styles from './styles';
 
-import {Header, StoriesSlider, Post, StoriesViewer} from '../../components';
+import {HomeHeader, StoriesSlider, Post, StoriesViewer} from '../../components';
 
 import {DOMAIN_PATH} from '../../config';
 const usersProfilePicture = [
@@ -131,6 +131,7 @@ function HomeScreen(props) {
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [orderedStories, setOrderedStories] = useState(null);
   const [selectedStory, setSelectedStory] = useState(null);
+  const [selectedStoryIndex, setSelectedStoryIndex] = useState(null);
 
   const handleStoryItemPress = (item, index) => {
     setSelectedStory(item);
@@ -152,7 +153,7 @@ function HomeScreen(props) {
 
   return (
     <View style={styles.homeScreenWrapper}>
-      <Header />
+      <HomeHeader />
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}

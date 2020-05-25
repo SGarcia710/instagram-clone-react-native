@@ -22,7 +22,7 @@ const TabNavigator = () => {
     <SafeAreaView style={{flex: 1}}>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Home"
+          initialRouteName="Search"
           screenOptions={({route}) => ({
             tabBarIcon: ({focused, color, size}) => {
               switch (route.name) {
