@@ -4,7 +4,13 @@ import axios from 'axios';
 
 import styles from './styles';
 
-import {HomeHeader, StoriesSlider, Post, StoriesViewer} from '../../components';
+import {
+  HomeHeader,
+  StoriesSlider,
+  Post,
+  StoriesViewer,
+  PostsListFooterLoader,
+} from '../../components';
 import SplashScreen from '../Splash/SplashScreen';
 
 function HomeScreen(props) {
@@ -79,6 +85,7 @@ function HomeScreen(props) {
         }
         data={posts}
         renderItem={renderPost}
+        ListFooterComponent={<PostsListFooterLoader />}
       />
       <StoriesViewer
         setIsStoryOpen={setIsStoryOpen}
