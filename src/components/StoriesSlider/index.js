@@ -10,7 +10,7 @@ import {
 } from '../';
 
 import {DOMAIN_PATH} from '../../config';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlatList} from 'react-native';
 
 export const StoriesSlider = ({stories, handleStoryItemPress}) => {
   const renderStoryItem = ({item, index}) => {
