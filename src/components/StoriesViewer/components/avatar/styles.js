@@ -2,10 +2,15 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
+    borderTopWidth: 2,
+    borderTopColor: 'gray',
+    marginTop: 8,
     flexDirection: 'row',
-    padding: 16,
+    marginHorizontal: 10,
+    paddingHorizontal: 5,
+    paddingVertical: 5,
     alignItems: 'center',
-    zIndex: 10000,
+    zIndex: 1,
   },
   avatar: {
     width: 36,
@@ -15,6 +20,12 @@ const styles = StyleSheet.create({
   },
   username: {
     color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  time: {
+    color: 'white',
+    marginLeft: 8,
     fontSize: 16,
   },
 });

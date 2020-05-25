@@ -1,5 +1,4 @@
-import {StyleSheet} from 'react-native';
-import {Dimensions} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +13,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 16,
   },
   avatarWrapper: {
     flexDirection: 'row',

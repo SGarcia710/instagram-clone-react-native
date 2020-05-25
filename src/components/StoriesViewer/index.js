@@ -10,6 +10,7 @@ export const StoriesViewer = ({
   isStoryOpen,
   selectedStory,
   orderedStories,
+  navigation,
 }) => {
   return (
     <Modal
@@ -19,6 +20,7 @@ export const StoriesViewer = ({
       position="center"
       swipeToClose
       swipeArea={250}
+      coverScreen={true}
       backButtonClose>
       <Stories
         footerComponent={<Footer />}

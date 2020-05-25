@@ -24,10 +24,11 @@ export class Stories extends PureComponent {
   };
 
   constructor(props) {
-    console.log('Entro a Stories y todo bien');
-
     super(props);
     this.stories = props.stories.map(() => React.createRef());
+  }
+  componentWillUnmount() {
+    console.log('saneo');
   }
 
   async componentDidMount() {
@@ -106,7 +107,7 @@ export class Stories extends PureComponent {
             <Animated.View
               ref={this.stories[i]}
               style={StyleSheet.absoluteFill}
-              key={story.toString()}>
+              key={story.url.toString()}>
               <StoryItem
                 footerComponent={footerComponent}
                 handleSelectedStoryOnLoaded={this._handleSelectedStoryOnLoaded}

@@ -9,7 +9,7 @@ import styles from './styles';
 export class Footer extends PureComponent {
   render() {
     return (
-      <View style={styles.footer}>
+      <View style={styles.footerWrapper}>
         <View style={styles.answerWrapper}>
           <View style={styles.answerIconWrapper}>
             <FontAwesome name="camera" size={16} color="white" />

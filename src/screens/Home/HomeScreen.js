@@ -118,7 +118,7 @@ const stories = [
   },
 ];
 
-function HomeScreen() {
+function HomeScreen(props) {
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [orderedStories, setOrderedStories] = useState(null);
   const [selectedStory, setSelectedStory] = useState(null);

@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     alignItems: 'center',
     paddingBottom: 5,
+    width: '100%',
   },
   answerWrapper: {
     borderRadius: 40,
