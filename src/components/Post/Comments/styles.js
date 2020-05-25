@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     borderLeftColor: 'lightgray',
     paddingLeft: 5,
     marginLeft: 10,
-    height: 18,
+    // height: 18,
     justifyContent: 'center',
     marginTop: -1,
   },

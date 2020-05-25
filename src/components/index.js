@@ -1,6 +1,6 @@
 export * from './Header';
-// export * from './StoryCircles/SomeonesStory';
-export * from './StoryCircles/SomeonesStoryWithoutGradient';
+export * from './StoryCircles/SomeonesStory';
+// export * from './StoryCircles/SomeonesStoryWithoutGradient';
 export * from './StoryCircles/MyStory';
 export * from './StoriesSlider';
 export {default as Post} from './Post/index';

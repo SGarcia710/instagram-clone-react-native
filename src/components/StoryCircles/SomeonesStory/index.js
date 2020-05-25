@@ -82,17 +82,15 @@ export const SomeonesStory = ({
               source={{uri: image}}
             />
           </View>
-
-          {type === CIRCLE_TYPES.LIVE_STORY ? (
-            <LinearGradient
-              {...getAngle(CIRCLE_TYPES.LIVE_STORY)}
-              colors={['#D20297', '#E20248']}
-              style={styles.textWrapper}>
-              <Text style={styles.text}>VIVO</Text>
-            </LinearGradient>
-          ) : null}
         </LinearGradient>
-
+        {type === CIRCLE_TYPES.LIVE_STORY ? (
+          <LinearGradient
+            {...getAngle(CIRCLE_TYPES.LIVE_STORY)}
+            colors={['#D20297', '#E20248']}
+            style={styles.textWrapper}>
+            <Text style={styles.text}>VIVO</Text>
+          </LinearGradient>
+        ) : null}
         {isMini ? null : (
           <Text style={styles.userName}>{generateUsername(userName)}</Text>
         )}

@@ -5,6 +5,7 @@ import {
   Dimensions,
   Platform,
   View,
+  SafeAreaView,
   ActivityIndicator,
 } from 'react-native';
 import styles from './styles';
@@ -86,55 +87,59 @@ export class Stories extends PureComponent {
     const {stories, selectedStory, footerComponent} = this.props;
 
     return (
-      <View style={styles.container}>
-        {!ready && (
-          <View
-            style={{
-              flex: 1,
-              zIndex: 9999,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: 'white',
-            }}>
-            <ActivityIndicator size="large" color="gray" />
-          </View>
-        )}
-        {stories
-          .map((story, i) => (
-            <Animated.View
-              ref={this.stories[i]}
-              style={StyleSheet.absoluteFill}
-              key={story.url.toString()}>
-              <StoryItem
-                footerComponent={footerComponent}
-                handleSelectedStoryOnLoaded={this._handleSelectedStoryOnLoaded}
-                selectedStory={selectedStory}
-                {...{story}}
-              />
-            </Animated.View>
-          ))
-          .reverse()}
-        <Animated.ScrollView
-          ref={this.scroll}
-          style={StyleSheet.absoluteFillObject}
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}
-          snapToInterval={width}
-          contentContainerStyle={{width: width * stories.length}}
-          onScroll={Animated.event(
-            [
-              {
-                nativeEvent: {
-                  contentOffset: {x},
-                },
-              },
-            ],
-            {useNativeDriver: true},
+      <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+          {!ready && (
+            <View
+              style={{
+                flex: 1,
+                zIndex: 9999,
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'white',
+              }}>
+              <ActivityIndicator size="large" color="gray" />
+            </View>
           )}
-          decelerationRate={0.99}
-          horizontal
-        />
-      </View>
+          {stories
+            .map((story, i) => (
+              <Animated.View
+                ref={this.stories[i]}
+                style={StyleSheet.absoluteFill}
+                key={story.url.toString()}>
+                <StoryItem
+                  footerComponent={footerComponent}
+                  handleSelectedStoryOnLoaded={
+                    this._handleSelectedStoryOnLoaded
+                  }
+                  selectedStory={selectedStory}
+                  {...{story}}
+                />
+              </Animated.View>
+            ))
+            .reverse()}
+          <Animated.ScrollView
+            ref={this.scroll}
+            style={StyleSheet.absoluteFillObject}
+            showsHorizontalScrollIndicator={false}
+            scrollEventThrottle={16}
+            snapToInterval={width}
+            contentContainerStyle={{width: width * stories.length}}
+            onScroll={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: {x},
+                  },
+                },
+              ],
+              {useNativeDriver: true},
+            )}
+            decelerationRate={0.99}
+            horizontal
+          />
+        </View>
+      </SafeAreaView>
     );
   }
 }

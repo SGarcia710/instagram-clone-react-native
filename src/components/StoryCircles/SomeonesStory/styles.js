@@ -1,4 +1,4 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   someonesStoryWrapper: (isMini) => ({
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: 2.5,
     position: 'absolute',
-    top: '78%',
+    top: '58%',
   },
   text: {
     color: 'white',

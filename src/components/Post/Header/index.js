@@ -5,16 +5,16 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 import styles from './styles';
 import {
-  // SomeonesStory,
+  SomeonesStory,
   CIRCLE_TYPES,
-  SomeonesStoryWithoutGradient,
+  // SomeonesStoryWithoutGradient,
 } from '../../';
 
 const Header = ({userName, userPicture, location}) => {
   return (
     <View style={styles.headerWrapper}>
       <View style={styles.userWrapper}>
-        <SomeonesStoryWithoutGradient
+        <SomeonesStory
           type={CIRCLE_TYPES.REGULAR_STORY}
           isMini={true}
           image={userPicture}

@@ -4,9 +4,9 @@ import {View} from 'react-native';
 import styles from './styles';
 import {
   MyStory,
-  // SomeonesStory,
+  SomeonesStory,
   CIRCLE_TYPES,
-  SomeonesStoryWithoutGradient,
+  // SomeonesStoryWithoutGradient,
 } from '../';
 
 import {DOMAIN_PATH} from '../../config';
@@ -15,7 +15,7 @@ import {FlatList} from 'react-native-gesture-handler';
 export const StoriesSlider = ({stories, handleStoryItemPress}) => {
   const renderStoryItem = ({item, index}) => {
     return (
-      <SomeonesStoryWithoutGradient
+      <SomeonesStory
         key={item.toString()}
         onHandlePress={() => handleStoryItemPress(item, index)}
         type={
@@ -36,7 +36,7 @@ export const StoriesSlider = ({stories, handleStoryItemPress}) => {
         ListHeaderComponent={
           <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
             <MyStory image={`${DOMAIN_PATH}/static/profile-photos/1.jpg`} />
-            <SomeonesStoryWithoutGradient
+            <SomeonesStory
               type={CIRCLE_TYPES.LIVE_STORY}
               image="https://pbs.twimg.com/profile_images/1229514235010572289/PJ7AAlBE_400x400.jpg"
               userName="dondiablo"

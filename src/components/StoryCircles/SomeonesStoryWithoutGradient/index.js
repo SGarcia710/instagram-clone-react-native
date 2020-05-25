@@ -33,6 +33,8 @@ const generateUsername = (userName) => {
   return newUsername;
 };
 
+// The intention of this component is to avoid the usage of Linear Gradient in case of compatibility issues
+
 export const SomeonesStoryWithoutGradient = ({
   image,
   userName,
