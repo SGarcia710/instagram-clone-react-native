@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, FlatList} from 'react-native';
 
 import styles from './styles';
 
 import {HomeHeader, StoriesSlider, Post, StoriesViewer} from '../../components';
-
+import SplashScreen from '../Splash/SplashScreen';
 import {DOMAIN_PATH} from '../../config';
 const usersProfilePicture = [
   `${DOMAIN_PATH}/static/profile-photos/1.jpg`,
@@ -152,27 +152,28 @@ function HomeScreen(props) {
   };
 
   return (
-    <View style={styles.homeScreenWrapper}>
-      <HomeHeader />
-      <FlatList
-        keyExtractor={(item, index) => index.toString()}
-        showsVerticalScrollIndicator={false}
-        ListHeaderComponent={
-          <StoriesSlider
-            handleStoryItemPress={handleStoryItemPress}
-            stories={stories}
-          />
-        }
-        data={posts}
-        renderItem={renderPost}
-      />
-      <StoriesViewer
-        setIsStoryOpen={setIsStoryOpen}
-        isStoryOpen={isStoryOpen}
-        selectedStory={selectedStory}
-        orderedStories={orderedStories}
-      />
-    </View>
+    <SplashScreen />
+    // <View style={styles.homeScreenWrapper}>
+    //   <HomeHeader />
+    //   <FlatList
+    //     keyExtractor={(item, index) => index.toString()}
+    //     showsVerticalScrollIndicator={false}
+    //     ListHeaderComponent={
+    //       <StoriesSlider
+    //         handleStoryItemPress={handleStoryItemPress}
+    //         stories={stories}
+    //       />
+    //     }
+    //     data={posts}
+    //     renderItem={renderPost}
+    //   />
+    //   <StoriesViewer
+    //     setIsStoryOpen={setIsStoryOpen}
+    //     isStoryOpen={isStoryOpen}
+    //     selectedStory={selectedStory}
+    //     orderedStories={orderedStories}
+    //   />
+    // </View>
   );
 }
 
