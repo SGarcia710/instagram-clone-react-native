@@ -9,4 +9,5 @@ axios.defaults.baseURL = `${DOMAIN_PATH}/api/`;
 
 AppRegistry.registerComponent(appName, () => TabNavigator);
 
+// Modalbox needs to update something about native animations, i didnt wanted to touch the library, so I used this to turn the warning off.
 console.disableYellowBox = true;

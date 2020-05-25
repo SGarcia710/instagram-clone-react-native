@@ -8,11 +8,13 @@ import {HomeHeader, StoriesSlider, Post, StoriesViewer} from '../../components';
 import SplashScreen from '../Splash/SplashScreen';
 
 function HomeScreen(props) {
-  const [stories, setStories] = useState(null);
-  const [posts, setPosts] = useState(null);
+  const [stories, setStories] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [selectedStory, setSelectedStory] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [postsPage, setPostsPage] = useState(1);
+  const [storiesPage, setStoriesPage] = useState(1);
 
   const handleStoryItemPress = (item) => {
     setSelectedStory(item);
@@ -23,40 +25,54 @@ function HomeScreen(props) {
     return <Post key={item.toString()} data={item} />;
   };
 
+  const fetchPostsData = async () => {
+    const postsRes = await axios.get(`posts?limit=10&page=${postsPage}`);
+    setPosts(posts.concat(postsRes.data.results.data));
+  };
+  const fetchStoriesData = async () => {
+    const storiesRes = await axios.get(`stories?limit=10&page=${storiesPage}`);
+    setStories(stories.concat(storiesRes.data.results.data));
+  };
+
   const fetchData = async () => {
     try {
-      const postsRes = await axios.get(`posts?limit=10&page=1`);
-      const storiesRes = await axios.get(`stories?limit=10&page=1`);
-
-      setPosts(postsRes.data.results.data);
-      setStories(storiesRes.data.results.data);
-
-      // here also can be handled when the process failed and returns a status 'fail' from the backend, but at this point i am kinda out of time 😅
+      await fetchPostsData();
+      await fetchStoriesData();
+      // here also can be handled when the process failed at backend and returns a status 'fail' , but at this point i am kinda out of time 😅
     } catch (error) {
       console.log(error.message);
     } finally {
       setIsLoading(false);
     }
   };
-
-  const handleLoadMore = () => console.warn('handleLoadMorePosts');
-
   useEffect(() => {
     fetchData();
   }, []);
 
+  const handleLoadMorePosts = () => setPostsPage(postsPage + 1);
+  useEffect(() => {
+    fetchPostsData();
+  }, [postsPage]);
+
+  const handleLoadMoreStories = () => setStoriesPage(storiesPage + 1);
+  useEffect(() => {
+    fetchStoriesData();
+  }, [storiesPage]);
+
   return isLoading ? (
-    // There is a side effect that can be controlled handling the fetch at the navigator. I didnt do it that way because I wasnt thinking about implementing redux at that point of the project, because I havent implemented auth 👽
+    // There is a side effect that can be controlled handling the fetch at the navigator (Moving the splash screen there). I didnt do it that way because I wasnt thinking about implementing redux at that point of the project, because I wasnt going to implement auth 👽
     <SplashScreen />
   ) : (
     <View style={styles.homeScreenWrapper}>
       <HomeHeader />
       <FlatList
-        onEndReached={handleLoadMore}
+        onEndReached={handleLoadMorePosts}
+        onEndReachedThreshold={2}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <StoriesSlider
+            handleLoadMoreStories={handleLoadMoreStories}
             handleStoryItemPress={handleStoryItemPress}
             stories={stories}
           />

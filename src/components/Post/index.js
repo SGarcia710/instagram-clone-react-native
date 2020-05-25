@@ -25,6 +25,7 @@ const Post = ({data}) => {
         userPicture={data.user.pictureUrl}
         location={data.location}
       />
+      {/* There are some images coming fron the api I am using that are broke, so it could be normal if you see blank spaces in the media viewer 👻*/}
       <MediaViewer media={data.media} />
       <OptionsBar />
       <LikesBar likesCount={data.likes} />

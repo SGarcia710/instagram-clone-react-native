@@ -11,7 +11,11 @@ import {
 
 import {DOMAIN_PATH} from '../../config';
 
-export const StoriesSlider = ({stories, handleStoryItemPress}) => {
+export const StoriesSlider = ({
+  stories,
+  handleStoryItemPress,
+  handleLoadMoreStories,
+}) => {
   const renderStoryItem = ({item, index}) => {
     return (
       <SomeonesStory
@@ -31,12 +35,14 @@ export const StoriesSlider = ({stories, handleStoryItemPress}) => {
   return (
     <View style={styles.storiesSlider}>
       <FlatList
+        onEndReached={handleLoadMoreStories}
+        onEndReachedThreshold={2}
         showsHorizontalScrollIndicator={false}
         ListHeaderComponent={
           <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
             {/* <MyStory image={`${DOMAIN_PATH}/static/profile-photos/1.jpg`} /> */}
             <MyStory
-              // :) This was really cool!
+              // 🐱‍👤This challenge was very fun🐱‍👤
               image={
                 'https://media-exp1.licdn.com/dms/image/C4E0BAQEhMwC_ga9SGA/company-logo_200_200/0?e=1598486400&v=beta&t=hUp8bjGyp-N0Ltd7G9EgB6SHx0lg8Nuo_YzNgaGQakg'
               }
