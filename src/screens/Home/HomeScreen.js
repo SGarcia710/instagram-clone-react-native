@@ -91,7 +91,7 @@ const posts = [
 const stories = [
   {
     _id: 'aksjdlaksjd1',
-    url: `${DOMAIN_PATH}/static/stories/2.jpg`,
+    url: `${DOMAIN_PATH}/static/stories/1.jpg`,
     user: {
       id: 'askldjalskdj',
       pictureUrl: `${DOMAIN_PATH}/static/profile-photos/2.jpg`,
@@ -100,7 +100,7 @@ const stories = [
   },
   {
     _id: 'aksjdlaksjd2',
-    url: `${DOMAIN_PATH}/static/stories/3.jpg`,
+    url: `${DOMAIN_PATH}/static/stories/2.jpg`,
     user: {
       id: 'askldjalskdj',
       pictureUrl: `${DOMAIN_PATH}/static/profile-photos/3.jpg`,
@@ -109,10 +109,19 @@ const stories = [
   },
   {
     _id: 'aksjdlaksjd3',
-    url: `${DOMAIN_PATH}/static/stories/4.jpg`,
+    url: `${DOMAIN_PATH}/static/stories/3.jpg`,
     user: {
       id: 'askldjalskdj',
       pictureUrl: `${DOMAIN_PATH}/static/profile-photos/4.jpg`,
+      userName: 'obsoletememories',
+    },
+  },
+  {
+    _id: 'aksjdlaksjd4',
+    url: `${DOMAIN_PATH}/static/stories/4.jpg`,
+    user: {
+      id: 'askldjalskdj',
+      pictureUrl: `${DOMAIN_PATH}/static/profile-photos/5.jpg`,
       userName: 'obsoletememories',
     },
   },
