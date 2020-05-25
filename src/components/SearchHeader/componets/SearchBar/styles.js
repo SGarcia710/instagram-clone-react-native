@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 const styles = StyleSheet.create({
   searchBarWrapper: {
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     padding: 0,
+    height: Platform.OS === 'ios' ? 25 : 0,
     marginLeft: 5,
   },
 });

@@ -11,7 +11,11 @@ export const SearchBar = () => {
     <View style={styles.searchBarWrapper}>
       <View style={styles.searchInputWrapper}>
         <FeatherIcons name="search" size={15} color="#989898" />
-        <TextInput placeholder="Buscar" style={styles.searchInput} />
+        <TextInput
+          placeholderTextColor="gray"
+          placeholder="Buscar"
+          style={styles.searchInput}
+        />
       </View>
       <AntDesign name="scan1" size={20} color="black" />
     </View>
