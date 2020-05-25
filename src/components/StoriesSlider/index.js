@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, FlatList} from 'react-native';
 
 import styles from './styles';
 import {
@@ -10,7 +10,6 @@ import {
 } from '../';
 
 import {DOMAIN_PATH} from '../../config';
-import {FlatList} from 'react-native';
 
 export const StoriesSlider = ({stories, handleStoryItemPress}) => {
   const renderStoryItem = ({item, index}) => {
