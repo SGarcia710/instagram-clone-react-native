@@ -12,7 +12,7 @@ import Time from './Time';
 
 import {getRandomNumber} from '../../utils';
 
-export const Post = ({data}) => {
+const Post = ({data}) => {
   const shouldRenderSection = {
     description: getRandomNumber(0, 1),
     comments: getRandomNumber(0, 1),
@@ -38,3 +38,4 @@ export const Post = ({data}) => {
     </View>
   );
 };
+export default React.memo(Post);

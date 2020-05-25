@@ -5,7 +5,7 @@ import {Stories, Footer} from './components';
 
 import styles from './styles';
 
-export const StoriesViewer = ({
+const StoriesViewer = ({
   setIsStoryOpen,
   isStoryOpen,
   selectedStory,
@@ -30,3 +30,4 @@ export const StoriesViewer = ({
     </Modal>
   );
 };
+export default React.memo(StoriesViewer);
