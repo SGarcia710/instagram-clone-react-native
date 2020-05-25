@@ -129,21 +129,11 @@ const stories = [
 
 function HomeScreen(props) {
   const [isStoryOpen, setIsStoryOpen] = useState(false);
-  const [orderedStories, setOrderedStories] = useState(null);
+  const [orderedStories] = useState(null);
   const [selectedStory, setSelectedStory] = useState(null);
-  const [selectedStoryIndex, setSelectedStoryIndex] = useState(null);
 
-  const handleStoryItemPress = (item, index) => {
+  const handleStoryItemPress = (item) => {
     setSelectedStory(item);
-
-    const _stories = Array.from(stories);
-
-    const rest = _stories.splice(index);
-    const first = _stories;
-
-    const newOrderedStories = rest.concat(first);
-
-    setOrderedStories(newOrderedStories);
     setIsStoryOpen(true);
   };
 
@@ -152,28 +142,28 @@ function HomeScreen(props) {
   };
 
   return (
-    <SplashScreen />
-    // <View style={styles.homeScreenWrapper}>
-    //   <HomeHeader />
-    //   <FlatList
-    //     keyExtractor={(item, index) => index.toString()}
-    //     showsVerticalScrollIndicator={false}
-    //     ListHeaderComponent={
-    //       <StoriesSlider
-    //         handleStoryItemPress={handleStoryItemPress}
-    //         stories={stories}
-    //       />
-    //     }
-    //     data={posts}
-    //     renderItem={renderPost}
-    //   />
-    //   <StoriesViewer
-    //     setIsStoryOpen={setIsStoryOpen}
-    //     isStoryOpen={isStoryOpen}
-    //     selectedStory={selectedStory}
-    //     orderedStories={orderedStories}
-    //   />
-    // </View>
+    // <SplashScreen />
+    <View style={styles.homeScreenWrapper}>
+      <HomeHeader />
+      <FlatList
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={
+          <StoriesSlider
+            handleStoryItemPress={handleStoryItemPress}
+            stories={stories}
+          />
+        }
+        data={posts}
+        renderItem={renderPost}
+      />
+      <StoriesViewer
+        setIsStoryOpen={setIsStoryOpen}
+        isStoryOpen={isStoryOpen}
+        selectedStory={selectedStory}
+        orderedStories={stories}
+      />
+    </View>
   );
 }
 

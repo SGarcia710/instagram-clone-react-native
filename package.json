@@ -10,14 +10,14 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "5.4.7",
     "@react-navigation/native": "5.4.2",
     "@react-navigation/stack": "5.3.9",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-gesture-handler": "1.6.1",
-    "react-native-grid-list": "^1.1.0",
+    "react-native-grid-list": "1.1.0",
     "react-native-linear-gradient": "2.5.6",
     "react-native-modalbox": "2.0.0",
     "react-native-reanimated": "1.9.0",

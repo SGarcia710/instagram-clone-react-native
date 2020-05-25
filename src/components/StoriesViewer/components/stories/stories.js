@@ -18,6 +18,7 @@ const ratio = Platform.OS === 'ios' ? 2 : 1.2;
 
 export class Stories extends PureComponent {
   stories = [];
+  indexes = [];
 
   state = {
     x: new Animated.Value(0),
@@ -33,6 +34,7 @@ export class Stories extends PureComponent {
     const {x} = this.state;
     await x.addListener(() =>
       this.stories.forEach((story, index) => {
+        this.indexes.push(this.props.stories[index]._id);
         const offset = index * width;
         const inputRange = [offset - width, offset + width];
         const translateX = x
@@ -71,6 +73,15 @@ export class Stories extends PureComponent {
         };
         story.current.setNativeProps({style});
       }),
+    );
+    setTimeout(
+      () =>
+        this.scroll.scrollTo({
+          x: width * this.indexes.indexOf(this.props.selectedStory._id),
+          y: 0,
+          animated: false,
+        }),
+      100,
     );
   }
 
@@ -119,7 +130,9 @@ export class Stories extends PureComponent {
             ))
             .reverse()}
           <Animated.ScrollView
-            ref={this.scroll}
+            ref={(scroller) => {
+              this.scroll = scroller;
+            }}
             style={StyleSheet.absoluteFillObject}
             showsHorizontalScrollIndicator={false}
             scrollEventThrottle={16}
