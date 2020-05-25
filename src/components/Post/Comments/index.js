@@ -6,6 +6,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import styles from './styles';
 
 import {getRandomNumber} from '../../../utils';
+import {DOMAIN_PATH} from '../../../config';
 
 const Comment = ({content, user}) => {
   return (
@@ -33,8 +34,7 @@ const AddComment = () => (
       <Image
         style={styles.addCommentImage}
         source={{
-          uri:
-            'https://firebasestorage.googleapis.com/v0/b/ig-clone-rn.appspot.com/o/profile-pictures%2FProfilePic%20(1).jpg?alt=media&token=3697f1f2-9257-49ea-9fad-d2804a5132f5',
+          uri: `${DOMAIN_PATH}/static/profile-photos/1.jpg`,
         }}
       />
       <Text style={styles.addCommentButton}>Agrega un comentario...</Text>

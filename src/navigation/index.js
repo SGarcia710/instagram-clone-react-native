@@ -6,13 +6,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeatherIcons from 'react-native-vector-icons/Feather';
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import NewPost from '../screens/NewPost';
 import Direct from '../screens/Direct';
 import Profile from '../screens/Profile';
+
+import {DOMAIN_PATH} from '../config';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,15 +43,6 @@ const TabNavigator = () => {
                 return <FeatherIcons name="send" size={size} color={color} />;
 
               case 'Profile':
-                // return focused ? (
-                //   <MaterialIcons name="person" size={size} color={color} />
-                // ) : (
-                //   <MaterialIcons
-                //     name="person-outline"
-                //     size={size}
-                //     color={color}
-                //   />
-                // );
                 return (
                   <View
                     style={{
@@ -64,8 +56,7 @@ const TabNavigator = () => {
                     }}>
                     <Image
                       source={{
-                        uri:
-                          'https://firebasestorage.googleapis.com/v0/b/ig-clone-rn.appspot.com/o/profile-pictures%2FProfilePic%20(1).jpg?alt=media&token=3697f1f2-9257-49ea-9fad-d2804a5132f5',
+                        uri: `${DOMAIN_PATH}/static/profile-photos/1.jpg`,
                       }}
                       style={{
                         height: 25,

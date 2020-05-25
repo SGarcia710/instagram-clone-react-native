@@ -4,15 +4,57 @@ import {View} from 'react-native';
 import styles from './styles';
 import {MyStory, SomeonesStory, CIRCLE_TYPES} from '../';
 
-export const StoriesSlider = ({stories}) => {
+import {DOMAIN_PATH} from '../../config';
+import {FlatList} from 'react-native-gesture-handler';
+import {getRandomNumber} from '../../utils';
+
+const whatTypeOfSomeonesStory = () => {
+  const randomNumber = getRandomNumber(1, 3);
+  switch (randomNumber) {
+    case 1:
+      return CIRCLE_TYPES.LIVE_STORY;
+    case 2:
+      return CIRCLE_TYPES.BESTFRIEND_REGULAR_STORY;
+    case 3:
+      return CIRCLE_TYPES.REGULAR_STORY;
+  }
+};
+
+export const StoriesSlider = ({stories, handleStoryItemPress}) => {
+  const renderStoryItem = ({item, index}) => {
+    return (
+      <SomeonesStory
+        key={item.toString()}
+        onHandlePress={() => handleStoryItemPress(item, index)}
+        type={
+          index % 2 === 0
+            ? CIRCLE_TYPES.REGULAR_STORY
+            : CIRCLE_TYPES.BESTFRIEND_REGULAR_STORY
+        }
+        image={item.user.pictureUrl}
+        userName={item.user.userName}
+      />
+    );
+  };
+
   return (
     <View style={styles.storiesSlider}>
-      <MyStory image={stories[0]} />
-      <SomeonesStory type={CIRCLE_TYPES.LIVE_STORY} image={stories[1]} />
-      <SomeonesStory type={CIRCLE_TYPES.REGULAR_STORY} image={stories[2]} />
-      <SomeonesStory
-        type={CIRCLE_TYPES.BESTFRIEND_REGULAR_STORY}
-        image={stories[3]}
+      <FlatList
+        showsHorizontalScrollIndicator={false}
+        ListHeaderComponent={
+          <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+            <MyStory image={`${DOMAIN_PATH}/static/profile-photos/1.jpg`} />
+            <SomeonesStory
+              type={CIRCLE_TYPES.LIVE_STORY}
+              image="https://pbs.twimg.com/profile_images/1229514235010572289/PJ7AAlBE_400x400.jpg"
+              userName="dondiablo"
+            />
+          </View>
+        }
+        keyExtractor={(item, index) => index.toString()}
+        horizontal={true}
+        data={stories}
+        renderItem={renderStoryItem}
       />
     </View>
   );

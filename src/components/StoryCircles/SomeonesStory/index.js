@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text} from 'react-native';
+import {View, Image, Text, TouchableWithoutFeedback} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './styles';
@@ -42,36 +42,61 @@ const getAngle = (type) => {
 };
 
 const SIZE_FOR_SLIDER = 70;
-const SIZE_FOR_HEADER = 38;
+const SIZE_FOR_POST_HEADER = 38;
 
-export const SomeonesStory = ({image, type, isMini}) => {
+const USERNAME_CHAR_LIMIT = 9;
+const generateUsername = (userName) => {
+  let newUsername = userName.slice(0, USERNAME_CHAR_LIMIT);
+
+  if (userName.length > USERNAME_CHAR_LIMIT)
+    return newUsername.trim().concat('...');
+
+  return newUsername;
+};
+
+export const SomeonesStory = ({
+  image,
+  userName,
+  type,
+  isMini,
+  onHandlePress,
+}) => {
   return (
-    <View style={styles.someonesStoryWrapper(isMini)}>
-      <LinearGradient
-        {...getAngle(type)}
-        colors={getGradient(type)}
-        style={styles.linearGradient(
-          isMini ? SIZE_FOR_HEADER : SIZE_FOR_SLIDER,
-        )}>
-        <View
-          style={styles.circleWrapper(
-            SIZE_FOR_SLIDER,
-            type === CIRCLE_TYPES.LIVE_STORY,
+    <TouchableWithoutFeedback
+      delayPressIn={50}
+      onPressIn={onHandlePress ? onHandlePress : null}>
+      <View style={styles.someonesStoryWrapper(isMini)}>
+        <LinearGradient
+          {...getAngle(type)}
+          colors={getGradient(type)}
+          style={styles.linearGradient(
+            isMini ? SIZE_FOR_POST_HEADER : SIZE_FOR_SLIDER,
           )}>
-          <Image style={styles.photo(SIZE_FOR_SLIDER)} source={{uri: image}} />
-        </View>
+          <View
+            style={styles.circleWrapper(
+              SIZE_FOR_SLIDER,
+              type === CIRCLE_TYPES.LIVE_STORY,
+            )}>
+            <Image
+              style={styles.photo(SIZE_FOR_SLIDER)}
+              source={{uri: image}}
+            />
+          </View>
 
-        {type === CIRCLE_TYPES.LIVE_STORY ? (
-          <LinearGradient
-            {...getAngle(CIRCLE_TYPES.LIVE_STORY)}
-            colors={['#D20297', '#E20248']}
-            style={styles.textWrapper}>
-            <Text style={styles.text}>VIVO</Text>
-          </LinearGradient>
-        ) : null}
-      </LinearGradient>
+          {type === CIRCLE_TYPES.LIVE_STORY ? (
+            <LinearGradient
+              {...getAngle(CIRCLE_TYPES.LIVE_STORY)}
+              colors={['#D20297', '#E20248']}
+              style={styles.textWrapper}>
+              <Text style={styles.text}>VIVO</Text>
+            </LinearGradient>
+          ) : null}
+        </LinearGradient>
 
-      {isMini ? null : <Text style={styles.userName}>Username</Text>}
-    </View>
+        {isMini ? null : (
+          <Text style={styles.userName}>{generateUsername(userName)}</Text>
+        )}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };

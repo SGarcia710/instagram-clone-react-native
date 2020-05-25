@@ -3,11 +3,12 @@ import React from 'react';
 import {View, Image, Text} from 'react-native';
 
 import styles from './styles';
+import {DOMAIN_PATH} from '../../../config';
 
 const usersPictures = [
-  'https://firebasestorage.googleapis.com/v0/b/ig-clone-rn.appspot.com/o/profile-pictures%2FProfilePic%20(1).jpg?alt=media&token=3697f1f2-9257-49ea-9fad-d2804a5132f5',
-  'https://firebasestorage.googleapis.com/v0/b/ig-clone-rn.appspot.com/o/profile-pictures%2FProfilePic%20(1).png?alt=media&token=e9637663-9ebe-4215-bc2a-1a9baa725c8c',
-  'https://firebasestorage.googleapis.com/v0/b/ig-clone-rn.appspot.com/o/profile-pictures%2FProfilePic%20(10).jpg?alt=media&token=b40b4f77-2d2d-4608-bd98-b30737da0a27',
+  `${DOMAIN_PATH}/static/profile-photos/2.jpg`,
+  `${DOMAIN_PATH}/static/profile-photos/3.jpg`,
+  `${DOMAIN_PATH}/static/profile-photos/4.jpg`,
 ];
 
 const LikesBar = ({likesCount}) => {
