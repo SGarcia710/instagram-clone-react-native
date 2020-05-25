@@ -15,6 +15,7 @@ const {width} = Dimensions.get('window');
 const perspective = width;
 const angle = Math.atan(perspective / (width / 2));
 const ratio = Platform.OS === 'ios' ? 2 : 1.2;
+// This ratio works fine on ios, but the most close and decent effect in android is that 1.2 with the space between images. It could be great to get some advice to fix this on android. 🦄
 
 export class Stories extends PureComponent {
   stories = [];

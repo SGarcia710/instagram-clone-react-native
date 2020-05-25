@@ -5,6 +5,7 @@ import Swiper from 'react-native-swiper';
 import Video from 'react-native-video';
 
 import styles from './styles';
+import {DOMAIN_PATH} from '../../../config';
 
 const renderMediaElement = (element) => {
   if (element.type === 'image')
@@ -18,7 +19,7 @@ const renderMediaElement = (element) => {
   return (
     <Video
       key={element.toString()}
-      source={{uri: element.url}}
+      source={{uri: `${DOMAIN_PATH}${element.url}`}}
       ref={(ref) => {
         this.player = ref;
       }}

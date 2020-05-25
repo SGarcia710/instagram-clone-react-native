@@ -21,15 +21,18 @@ const Post = ({data}) => {
   return (
     <View>
       <Header
-        userName={data.userName}
-        userPicture={data.userPicture}
+        userName={data.user.userName}
+        userPicture={data.user.pictureUrl}
         location={data.location}
       />
       <MediaViewer media={data.media} />
       <OptionsBar />
       <LikesBar likesCount={data.likes} />
       {shouldRenderSection.description ? (
-        <Description userName={data.userName} description={data.description} />
+        <Description
+          userName={data.user.userName}
+          description={data.description}
+        />
       ) : null}
       {shouldRenderSection.comments ? (
         <Comments commentsCount={data.numberComments} />

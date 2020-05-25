@@ -2,7 +2,7 @@ import React from 'react';
 
 import {View, Text} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-
+import {DOMAIN_PATH} from '../../../config';
 import styles from './styles';
 import {
   SomeonesStory,
@@ -17,7 +17,7 @@ const Header = ({userName, userPicture, location}) => {
         <SomeonesStory
           type={CIRCLE_TYPES.REGULAR_STORY}
           isMini={true}
-          image={userPicture}
+          image={`${DOMAIN_PATH}${userPicture}`}
         />
         <View style={styles.infoWrapper}>
           <Text style={styles.title}>{userName}</Text>

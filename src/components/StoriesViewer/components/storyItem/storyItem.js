@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
-import {View, Image, SafeAreaView, Text} from 'react-native';
+import {View, Image} from 'react-native';
 
 import styles from './styles';
-
+import {DOMAIN_PATH} from '../../../../config';
 import {Avatar} from '../';
 
 export class StoryItem extends PureComponent {
@@ -17,7 +17,10 @@ export class StoryItem extends PureComponent {
     return (
       <>
         <View style={styles.container}>
-          <Avatar userName={user.userName} pictureUrl={user.pictureUrl} />
+          <Avatar
+            userName={user.userName}
+            pictureUrl={`${DOMAIN_PATH}${user.pictureUrl}`}
+          />
           <Image
             onLoad={() =>
               selectedStory &&
@@ -25,7 +28,7 @@ export class StoryItem extends PureComponent {
               handleSelectedStoryOnLoaded()
             }
             style={styles.image}
-            source={{uri: url}}
+            source={{uri: `${DOMAIN_PATH}${url}`}}
           />
         </View>
         <View style={styles.footer}>{footerComponent}</View>

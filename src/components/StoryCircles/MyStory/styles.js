@@ -9,6 +9,8 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     alignItems: 'center',
+    // backgroundColor: 'black',
+    // borderRadius: 70 / 2,
   },
   photo: {
     width: '93%',
