@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   mediaViewerWrapper: {
@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
+  },
+  paginationDots: {
+    position: null,
+    bottom: -25,
   },
 });
 

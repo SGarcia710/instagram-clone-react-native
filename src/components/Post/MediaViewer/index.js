@@ -36,7 +36,10 @@ const MediaViewer = ({media}) => {
   return (
     <View style={styles.mediaViewerWrapper}>
       {media.length > 1 ? (
-        <Swiper loop={false} style={styles.wrapper}>
+        <Swiper
+          loop={false}
+          style={styles.wrapper}
+          paginationStyle={styles.paginationDots}>
           {media.map((element) => {
             return renderMediaElement(element);
           })}
