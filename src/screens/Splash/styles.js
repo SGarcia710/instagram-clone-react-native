@@ -9,13 +9,14 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     alignItems: 'center',
-    top: '95%',
+    top: '92%',
   },
   fromText: {
-    fontSize: 12,
+    fontSize: 14,
     color: 'gray',
   },
   facebookName: {
+    fontSize: 16,
     fontWeight: 'bold',
     letterSpacing: 1,
   },
