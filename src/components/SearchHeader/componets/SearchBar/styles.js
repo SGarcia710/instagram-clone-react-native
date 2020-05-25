@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     padding: 0,
-    height: Platform.OS === 'ios' ? 25 : 0,
+    height: 25,
     marginLeft: 5,
   },
 });
