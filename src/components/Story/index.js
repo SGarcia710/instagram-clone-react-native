@@ -10,7 +10,6 @@ export class Story extends Component {
     const {
       story: {url},
     } = this.props;
-    console.log(url);
 
     return (
       <SafeAreaView style={styles.storyWrapper}>

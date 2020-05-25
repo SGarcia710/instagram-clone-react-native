@@ -27,9 +27,6 @@ export class Stories extends PureComponent {
     super(props);
     this.stories = props.stories.map(() => React.createRef());
   }
-  componentWillUnmount() {
-    console.log('saneo');
-  }
 
   async componentDidMount() {
     const {x} = this.state;
