@@ -19,7 +19,6 @@ function HomeScreen(props) {
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [selectedStory, setSelectedStory] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingPosts, setIsLoadingPosts] = useState(false);
   const [postsPage, setPostsPage] = useState(1);
   const [storiesPage, setStoriesPage] = useState(1);
 
@@ -33,13 +32,16 @@ function HomeScreen(props) {
   };
 
   const fetchPostsData = async () => {
-    setIsLoadingPosts(true);
     const postsRes = await axios.get(`posts?limit=5&page=${postsPage}`);
-    setPosts(posts.concat(postsRes.data.results.data));
+
+    if (postsRes.data.results.count)
+      setPosts(posts.concat(postsRes.data.results.data));
   };
   const fetchStoriesData = async () => {
-    const storiesRes = await axios.get(`stories?limit=5&page=${storiesPage}`);
-    setStories(stories.concat(storiesRes.data.results.data));
+    const storiesRes = await axios.get(`stories?limit=8&page=${storiesPage}`);
+
+    if (storiesRes.data.results.count)
+      setStories(stories.concat(storiesRes.data.results.data));
   };
 
   const fetchData = async () => {
@@ -63,8 +65,6 @@ function HomeScreen(props) {
       fetchPostsData();
     } catch (error) {
       console.log(error.message);
-    } finally {
-      setIsLoadingPosts(false);
     }
   }, [postsPage]);
 
@@ -94,9 +94,7 @@ function HomeScreen(props) {
         }
         data={posts}
         renderItem={renderPost}
-        ListFooterComponent={() =>
-          isLoadingPosts ? <PostsListFooterLoader /> : null
-        }
+        ListFooterComponent={<PostsListFooterLoader />}
       />
       <StoriesViewer
         setIsStoryOpen={setIsStoryOpen}
