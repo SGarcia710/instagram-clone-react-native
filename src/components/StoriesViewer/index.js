@@ -10,7 +10,6 @@ const StoriesViewer = ({
   isStoryOpen,
   selectedStory,
   orderedStories,
-  navigation,
 }) => {
   return (
     <Modal
@@ -22,6 +21,7 @@ const StoriesViewer = ({
       swipeArea={250}
       coverScreen={true}
       backButtonClose>
+      {/* There is an undesired effect when using ios and its that the stories viewer never starts from the given index, it returns to the 0 index.  Looking for some fix 🚨 */}
       <Stories
         footerComponent={<Footer />}
         selectedStory={selectedStory}
