@@ -19,6 +19,7 @@ function HomeScreen(props) {
   const [isStoryOpen, setIsStoryOpen] = useState(false);
   const [selectedStory, setSelectedStory] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingPosts, setIsLoadingPosts] = useState(false);
   const [postsPage, setPostsPage] = useState(1);
   const [storiesPage, setStoriesPage] = useState(1);
 
@@ -32,11 +33,12 @@ function HomeScreen(props) {
   };
 
   const fetchPostsData = async () => {
-    const postsRes = await axios.get(`posts?limit=10&page=${postsPage}`);
+    setIsLoadingPosts(true);
+    const postsRes = await axios.get(`posts?limit=5&page=${postsPage}`);
     setPosts(posts.concat(postsRes.data.results.data));
   };
   const fetchStoriesData = async () => {
-    const storiesRes = await axios.get(`stories?limit=10&page=${storiesPage}`);
+    const storiesRes = await axios.get(`stories?limit=5&page=${storiesPage}`);
     setStories(stories.concat(storiesRes.data.results.data));
   };
 
@@ -57,7 +59,13 @@ function HomeScreen(props) {
 
   const handleLoadMorePosts = () => setPostsPage(postsPage + 1);
   useEffect(() => {
-    fetchPostsData();
+    try {
+      fetchPostsData();
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setIsLoadingPosts(false);
+    }
   }, [postsPage]);
 
   const handleLoadMoreStories = () => setStoriesPage(storiesPage + 1);
@@ -77,6 +85,7 @@ function HomeScreen(props) {
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
+          // 🐛: the first time we load the posts there are only 5 on memory, and if you open the StoriesViewer, and scroll until the end, it wont fetch more data. It could be handled listening the position of the animation and fetching again when its close to the end, something like ((width * stories.length) - actualPosition < width * 2) and it will fetch when there are at least two stories left before the end of the scroll.
           <StoriesSlider
             handleLoadMoreStories={handleLoadMoreStories}
             handleStoryItemPress={handleStoryItemPress}
@@ -85,7 +94,9 @@ function HomeScreen(props) {
         }
         data={posts}
         renderItem={renderPost}
-        ListFooterComponent={<PostsListFooterLoader />}
+        ListFooterComponent={() =>
+          isLoadingPosts ? <PostsListFooterLoader /> : null
+        }
       />
       <StoriesViewer
         setIsStoryOpen={setIsStoryOpen}
