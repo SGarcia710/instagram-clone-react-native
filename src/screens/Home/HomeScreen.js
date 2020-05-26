@@ -32,13 +32,13 @@ function HomeScreen(props) {
   };
 
   const fetchPostsData = async () => {
-    const postsRes = await axios.get(`posts?limit=5&page=${postsPage}`);
+    const postsRes = await axios.get(`posts?limit=6&page=${postsPage}`);
 
     if (postsRes.data.results.count)
       setPosts(posts.concat(postsRes.data.results.data));
   };
   const fetchStoriesData = async () => {
-    const storiesRes = await axios.get(`stories?limit=8&page=${storiesPage}`);
+    const storiesRes = await axios.get(`stories?limit=5&page=${storiesPage}`);
 
     if (storiesRes.data.results.count)
       setStories(stories.concat(storiesRes.data.results.data));
@@ -81,7 +81,7 @@ function HomeScreen(props) {
       <HomeHeader />
       <FlatList
         onEndReached={handleLoadMorePosts}
-        onEndReachedThreshold={2}
+        onEndReachedThreshold={3}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={

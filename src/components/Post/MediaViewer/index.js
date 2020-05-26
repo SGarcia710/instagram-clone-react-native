@@ -23,10 +23,12 @@ const renderMediaElement = (element) => {
       ref={(ref) => {
         this.player = ref;
       }}
+      muted
       onBuffer={this.onBuffer}
       onEnd={this.onEnd}
       onError={this.videoError}
       style={styles.backgroundVideo}
+      on
       resizeMode="cover"
       repeat={true}
     />
